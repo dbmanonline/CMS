@@ -17,6 +17,7 @@ namespace CMS.Data
         }
 
         DbSet<Category> Categories { get; set; }
+        DbSet<Post> Posts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -45,6 +46,52 @@ namespace CMS.Data
             modelBuilder.Entity<Category>().Property(c => c.Description)
                 .IsMaxLength()
                 .HasColumnOrder(3);
+
+            
+            #region Post Fields
+
+            modelBuilder.Entity<Post>()
+                .HasKey(p => p.ID);
+
+            modelBuilder.Entity<Post>().Property(p => p.ID)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .HasColumnOrder(0);
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Post>().Property(p => p.PostTitle)
+                .HasMaxLength(250)
+                .IsRequired()
+                .HasColumnOrder(1);
+
+            modelBuilder.Entity<Post>().Property(p => p.Slug)
+                .HasMaxLength(250)
+                .IsRequired()
+                .HasColumnOrder(2);
+
+            modelBuilder.Entity<Post>().Property(p => p.PostDescription)
+                .IsRequired()
+                .HasColumnOrder(3);
+
+            modelBuilder.Entity<Post>().Property(p => p.PostContent)
+                .IsRequired()
+                .HasColumnOrder(4);
+
+            modelBuilder.Entity<Post>().Property(p => p.MetaTitle)
+                .HasMaxLength(250)
+                .IsRequired()
+                .HasColumnOrder(5);
+
+            modelBuilder.Entity<Post>().Property(p => p.MetaDescription)
+                .HasMaxLength(250)
+                .IsRequired()
+                .HasColumnOrder(6);
+
+            modelBuilder.Entity<Post>().Property(p => p.MetaKeywords)
+                .HasMaxLength(250)
+                .IsRequired()
+                .HasColumnOrder(7);
+
+            #endregion
         }
     }
 }

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace CMS.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IPostService
     {
-        void Commit();
-        IRepository<Category> CategoryRepository { get; }
-        IRepository<Post> PostRepository { get; }
+        IEnumerable<Post> GetAll();
     }
 }

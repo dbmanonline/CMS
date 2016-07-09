@@ -11,6 +11,7 @@ namespace CMS.Data
     public class UnitOfWork : IUnitOfWork
     {
         private IRepository<Category> _categoryRepository;
+        private IRepository<Post> _postRepository;
 
         private readonly CMSContext _cmsContext;
 
@@ -26,6 +27,16 @@ namespace CMS.Data
                 if (_categoryRepository == null)
                     _categoryRepository = new GenericRepository<Category>(_cmsContext);
                 return _categoryRepository;
+            }
+        }
+
+        public IRepository<Post> PostRepository
+        {
+            get
+            {
+                if (_postRepository == null)
+                    _postRepository = new GenericRepository<Post>(_cmsContext);
+                return _postRepository;
             }
         }
 

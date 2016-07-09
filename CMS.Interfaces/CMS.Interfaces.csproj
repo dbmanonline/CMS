@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICategoryService.cs" />
+    <Compile Include="IPostService.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
